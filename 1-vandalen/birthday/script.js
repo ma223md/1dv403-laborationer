@@ -4,12 +4,36 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-		
-
-
 			// Din kod här.
+	    // kasta undantag om det inte går att tolka som ett datum YYYY-MM-DD
 
+	    // objekt med dagens datum
+	    var d = new Date();
+	    var today = d.getTime();
+	    // datumobjekt med date som värden
+	    var bday = new Date(date);
 
+        // ger personens ålder
+	    //var diff = bday - today;
+
+	    // sätt födelsedagens år till i år
+	    var year = today.getYear();
+	    bday.setFullYear(year);
+
+	    birthday = bday.getTime();
+        
+	    var diff = birthday - today;
+
+        // variabler för att räkna ut tid
+	    var minutes = 1000 * 60;
+	    var hours = minutes * 60;
+	    var days = hours * 24; 
+	    var years = days * 365;
+
+	    var timeTilBday = Math.round(diff / days);
+
+        // returnera tid kvar
+	    return timeTilBday;
 
 
 	};
