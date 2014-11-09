@@ -18,10 +18,15 @@ window.onload = function(){
         }
 
         for (var i = 0; i < stingArray.length; i++) {
-            // if uppercase kalla på uppertoLower
-            // else if lowercase kalla på lowertoUpper
-            // if a or A kovertera till #
-
+            if (stringArray[i] == stringArray[i].toUpperCase()) {
+                stringArray[i].stringArray[i].toLowerCase();
+            }
+            else if (stringArray[i] == stringArray[i].toLowerCase()) {
+                stringArray[i].stringArray[i].toUpperCase();
+            }
+            if (stringArray[i] == a || stringArray[i] == A) {
+                stringArray[i] = "#";
+            }
         }
 
         return str;
