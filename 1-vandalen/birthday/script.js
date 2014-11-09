@@ -7,34 +7,37 @@ window.onload = function(){
 			// Din kod här.
 	    // kasta undantag om det inte går att tolka som ett datum YYYY-MM-DD
 
+	    // variabler för att räkna ut tid
+	    var minutes = 1000 * 60;
+	    var hours = minutes * 60;
+	    var days = hours * 24;
+
 	    // objekt med dagens datum
 	    var d = new Date();
 	    var today = d.getTime();
 	    // datumobjekt med date som värden
 	    var bday = new Date(date);
 
-        // ger personens ålder
-	    //var diff = bday - today;
-
 	    // sätt födelsedagens år till i år
-	    var year = today.getYear();
+	    var year = d.getFullYear();
 	    bday.setFullYear(year);
-
+        // få millisekunder till födelsedagen
 	    birthday = bday.getTime();
         
+        // räkna ut hur lång tid till födelsedag och avrunda uppåt
 	    var diff = birthday - today;
+	    var timeTilBday = Math.ceil(diff / days);
 
-        // variabler för att räkna ut tid
-	    var minutes = 1000 * 60;
-	    var hours = minutes * 60;
-	    var days = hours * 24; 
-	    var years = days * 365;
-
-	    var timeTilBday = Math.round(diff / days);
-
-        // returnera tid kvar
-	    return timeTilBday;
-
+	    // om man redan har fyllt år i år..
+	    if (timeTilBday < 0) {
+	        // räkna ut tid till nästa födelsedag
+	        timeTilBday = 356 + timeTilBday;
+            return timeTilBday;
+	    }
+	        // om man inte redan fyllt år i år
+	    else {
+	        return timeTilBday;
+	    }
 
 	};
 	// ------------------------------------------------------------------------------
