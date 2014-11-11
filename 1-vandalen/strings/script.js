@@ -5,65 +5,24 @@ window.onload = function(){
 	// I denna funktion ska du skriva koden för att hantera "spelet"
     var convertString = function(str){
         // Plats för förändring.
+        var replaceA = str.replace(/[Aa]/g, '#');  //ersätter A:n med #
+        var newStr;
 
-        // Gör om sträng till array med bokstäver
-        var stingArray = str.split("");
+        // loopa genom sträng, testa om det är stor eller liten bokstav
+        for (var i = 0; i < replaceA.length; i++) {
+            var loopChar = replaceA[i];
 
-        function upperToLower(char) {
-            return char.toLowerCase();
-        }
-
-        function lowerToUpper(char) {
-            return char.toUpperCase();
-        }
-
-        for (var i = 0; i < stingArray.length; i++) {
-            if (stringArray[i] == stringArray[i].toUpperCase()) {
-                stringArray[i].stringArray[i].toLowerCase();
+            if (loopChar == loopChar.toUpperCase()) {
+                loopChar = loopChar.toLowerCase();
+                newStr = newStr + loopChar;
             }
-            else if (stringArray[i] == stringArray[i].toLowerCase()) {
-                stringArray[i].stringArray[i].toUpperCase();
-            }
-            if (stringArray[i] == a || stringArray[i] == A) {
-                stringArray[i] = "#";
+            else if (loopChar == loopChar.toLowerCase()) {
+                loopChar = loopChar.toUpperCase();
+                newStr = newStr + loopChar;
             }
         }
 
-        return str;
-
-
-        //// Gå igenom array bokstav för bokstav
-        //for (var i = 0; i < stingArray.length; i++){
-        //        if (stringArray[i] != stringArray[i].toUpperCase()) {
-        //                // Om bokstav är lowercase konvertera till uppercase
-        //                stringArray[i] = stringArray[i].toUpperCase();
-        //            }
-        //        else {
-        //                // Om bokstav är uppercase konvertera till lowercase
-        //                stringArray[i] = stringArray[i].toLowerCase();
-        //        }
-        //        if (stringArray[i] == "a" || stringArray[i] == "A") {
-        //            // Om bokstav är A eller a konvertera till #
-        //            stringArray[i] = "#";
-        //        }     
-        //    }
-        //// Sätt ihop array till sträng
-        ////str = stingArray.join("");
-        //// Returnera konverterad sträng
-        //return str;
-
-        // Vid fel, kasta ett undantag med ett meddelande till användaren.
-
-        //var convertedString = '';
-        //var convertedString = str.toUpperCase();
-
-        //for (var i = 0; i < stingArray.length; i++) {
-        //    if (stingArray.charCodeAt(i) >= 65 && stingArray.charCodeAt(i) <= 90) {
-        //        convertedString = convertedString + stingArray.charAt(i).toLowerCase();
-        //    }
-        //    else
-        //        convertedString = convertedString + stingArray.charAt(i).toUpperCase();
-        //}
+        return newStr;
 
 	};
 	// ------------------------------------------------------------------------------
