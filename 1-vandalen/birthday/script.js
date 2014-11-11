@@ -6,6 +6,9 @@ window.onload = function(){
 	var birthday = function(date){
 			// Din kod här.
 	    // kasta undantag om det inte går att tolka som ett datum YYYY-MM-DD
+	    //if (isNaN(date)) { //Om personen inte fyller i ett datum
+	    //    throw new Error("Felaktigt datumformat.");
+	    //}
 
 	    // variabler för att räkna ut tid
 	    var minutes = 1000 * 60;
@@ -19,8 +22,7 @@ window.onload = function(){
 	    var bday = new Date(date);
 
 	    // sätt födelsedagens år till i år
-	    var year = d.getFullYear();
-	    bday.setFullYear(year);
+	    bday.setFullYear(d.getFullYear());
         // få millisekunder till födelsedagen
 	    birthday = bday.getTime();
         
@@ -31,7 +33,11 @@ window.onload = function(){
 	    // om man redan har fyllt år i år..
 	    if (timeTilBday < 0) {
 	        // räkna ut tid till nästa födelsedag
-	        timeTilBday = 356 + timeTilBday;
+	        bday.setFullYear(d.getFullYear() + 1); // sätt födelsedag till nästa år
+	        birthday = bday.getTime();
+	        diff = birthday - today;
+	        timeTilBday = Math.ceil(diff / days)
+
             return timeTilBday;
 	    }
 	        // om man inte redan fyllt år i år
