@@ -6,9 +6,11 @@ window.onload = function(){
 	var birthday = function(date){
 			// Din kod här.
 	    // kasta undantag om det inte går att tolka som ett datum YYYY-MM-DD
-	    //if (isNaN(date)) { //Om personen inte fyller i ett datum
-	    //    throw new Error("Felaktigt datumformat.");
-	    //}
+	    //var test = date.split("-");
+	    var test = parseInt(date);
+	    if (isNaN(test)) { 
+	        throw new Error("Felaktigt datum angivet");
+	    }
 
 	    // variabler för att räkna ut tid
 	    var minutes = 1000 * 60;
