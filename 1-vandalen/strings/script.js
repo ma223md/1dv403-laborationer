@@ -3,12 +3,12 @@
 window.onload = function(){
 
 	// I denna funktion ska du skriva koden för att hantera "spelet"
-    var convertString = function(str){
-        // Plats för förändring.
-        var replaceA = str.replace(/[Aa]/g, '#');  //ersätter A:n med #
-        var newStr;
+    var convertString = function (str) {
+        // ersätter A:n med #
+        var replaceA = str.replace(/[Aa]/g, '#');
+        var newStr = "";
 
-        // loopa genom sträng, testa om det är stor eller liten bokstav
+        // loopa genom sträng, testa om det är stor eller liten bokstav och bygg ny sträng
         for (var i = 0; i < replaceA.length; i++) {
             var loopChar = replaceA[i];
 
