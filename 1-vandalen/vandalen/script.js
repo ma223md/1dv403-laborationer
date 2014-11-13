@@ -7,6 +7,7 @@ var makePerson = function(persArr){
     var nameArray = [];
     var ageArray = [];
     var nameString = "";
+    var average= 0;
 
     // loopa igenom person-array
     for (var i = 0; i < persArr.length; i++) {
@@ -14,17 +15,22 @@ var makePerson = function(persArr){
         //nameArray.push(persArr[i].name);
         //ageArray.push(persArr[i].age);
         nameArray[i] = persArr[i].name;
-        ageArray[i] = persArr[i].born;
+        ageArray[i] = persArr[i].age;
+        average += persArr[i].age;
     }
 
     // sortera åldrar
     ageArray.sort(function (a, b) { return a - b });
-
+    // räkna ut medelålder
+    average = Math.round(average / persArr.length);
+    // sortera å, ä, ö
+    function localeSort(string1, string2) {
+        return string1.toString().localeCompare(string2.toString());
+    }
     // sortera namn
-    nameArray.sort();
+    nameArray.sort(localeSort);
 
     //sätt ihop till sträng
-    
     for (i = 0; i < nameArray.length; i++) {
         nameString += nameArray[i];
         // lägg till "," till alla utom sista namnet
@@ -32,12 +38,11 @@ var makePerson = function(persArr){
     }
 
     // egenskaper för retur-objekt
-    result.maxAge = ageArray[ageArray.length];
+    result.maxAge = ageArray[ageArray.length - 1];
     result.minAge = ageArray[0];
-    result.averageAge = 13;
+    result.averageAge = average;
     result.names = nameString;
 
     return result;
-    //var data = [{ name: "John Häggerud", age: 37 }, { name: "Johan Leitet", age: 36 }, { name: "Mats Loock", age: 46 }];
 }
 
