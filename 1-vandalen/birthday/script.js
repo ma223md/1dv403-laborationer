@@ -4,13 +4,6 @@ window.onload = function(){
 
 	
 	var birthday = function(date){
-			// Din kod här.
-	    // kasta undantag om det inte går att tolka som ett datum YYYY-MM-DD
-	    //var test = date.split("-");
-	    var test = parseInt(date);
-	    if (isNaN(test)) { 
-	        throw new Error("Felaktigt datum angivet");
-	    }
 
 	    // variabler för att räkna ut tid
 	    var minutes = 1000 * 60;
@@ -27,7 +20,7 @@ window.onload = function(){
 	    bday.setFullYear(d.getFullYear());
         // få millisekunder till födelsedagen
 	    birthday = bday.getTime();
-        
+
         // räkna ut hur lång tid till födelsedag och avrunda uppåt
 	    var diff = birthday - today;
 	    var timeTilBday = Math.ceil(diff / days);
