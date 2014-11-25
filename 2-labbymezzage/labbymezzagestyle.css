@@ -1,0 +1,42 @@
+@font-face {
+    font-family: headline;
+    src: url(../2-labbymezzage/fonts/OldLondon.ttf);
+}
+
+@font-face {
+    font-family: article;
+    src: url(fonts/linowrite.ttf);
+}
+
+body 
+{
+    background-color: #efebe4;
+}
+
+header h1 {
+    text-align: center;
+    padding-top: 15px;
+}
+
+#container {
+    width: 600px;
+    background-color: #cfbbaa;
+}
+
+main p {
+    font-family: article;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+h1 {
+    font-family: headline;
+    font-size: 50px;
+}
+
+footer {
+    font-size: 12px;
+}
