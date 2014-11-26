@@ -19,8 +19,21 @@ header h1 {
 }
 
 #container {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     width: 600px;
-    background-color: #cfbbaa;
+    background-color: #dbd1ba;
+    padding-left: 20px;
+    padding-right: 20px;
+    -webkit-box-shadow: 3px 4px 35px -4px rgba(38,35,32,1);
+    -moz-box-shadow: 3px 4px 35px -4px rgba(38,35,32,1);
+    box-shadow: 3px 4px 35px -4px rgba(38,35,32,1);
+}
+
+main {
+    border-style: solid;
+    border-width: 1px;
 }
 
 main p {
@@ -28,13 +41,28 @@ main p {
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-style: solid;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom: solid;
     border-width: 1px;
 }
 
 h1 {
     font-family: headline;
     font-size: 50px;
+}
+
+textarea {
+    resize: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input {
+    display: block;
+    margin-left: auto;
+    margin-right: 90px;
 }
 
 footer {
