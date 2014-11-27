@@ -1,7 +1,7 @@
  "use strict";
 
 var MessageBoard = {
-        // array för meddelanden
+        // array for messages
         messages: [],
         
         init: function(){
@@ -19,7 +19,7 @@ var MessageBoard = {
                 return false;
             }; */
 
-        // funktion för att skicka meddelande med enter, och ny rad för shift+enter
+        // function for sending with enter, and adding newline with enter+shift
         textArea.onkeydown = function(e){
              if (e.keyCode === 13 && !e.shiftKey){
                      MessageBoard.createMessage();
@@ -29,34 +29,33 @@ var MessageBoard = {
         },
 
     
-    // skapa ett nytt meddelande
+    // function for creating new messages
     createMessage: function(){
         var mess = document.getElementById("messagetext").value;
         var message = new Message(mess, new Date());
         
-        // lägg till meddelande i array
+        // add message to array
         MessageBoard.messages.push(message);
         
-        // rendera meddelanden
+        // render messages
         MessageBoard.renderMessages();
-        // document.getElementById("messageboard").innerHTML = MessageBoard.messages[0].getHTMLText();
         },
        
         
-    // skriv ut meddelanden
+    // funtion for rendering messages
     renderMessages: function() {
-        // ta bort alla meddelanden
+        // delet all messages
         document.getElementById("messageboard").innerHTML = "";
         
-        //skriv ut alla meddelanden
+        // render all messages
         var counter = 0;
         for (var i = 0; i < MessageBoard.messages.length; i++) {
-            // skriv ut varje meddelande
+            // render single message
             MessageBoard.renderMessage(i);
-            // lägg till på counter
+            // add to message counter
             counter++;
             }
-        // skriv ut antal meddelanden
+        // render number of messages
         document.getElementById("counter").innerHTML = counter;
     },
         
@@ -78,7 +77,7 @@ var MessageBoard = {
         clock.setAttribute('alt', 'Icon in shape of a clock');
         clock.style.width = "16px";
         clock.style.height = "16px";
-        //lägg till klockikon till tidsstämpel
+        //add clock icon to timestamp
         date.appendChild(clock);
         
         // create delete icon
@@ -94,21 +93,20 @@ var MessageBoard = {
         text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
         div.appendChild(text);
         
-        // kalla på raderingsfunktion vid klick på ikonen
+        // call delete function when icon is clicked
         deleteIcon.onclick = function(){
             MessageBoard.deleteMessage(messageID);
         }
         
-        // visa ruta med tid i vid klick på ikonen
+        // call time function when icon is clicked
         clock.onclick = function(){
             MessageBoard.dateTime(messageID);
         }
         
     },
     
-    // funktion för att radera meddelande
+    // function for deletng messages
     deleteMessage: function(messageID){
-        // kolla om användaren vill radera meddelandet
         var check = confirm("Are you sure you want to delete this message?");
         if (check === true){
             MessageBoard.messages.splice(messageID,1)
@@ -116,12 +114,12 @@ var MessageBoard = {
         }
     },
     
-    // funktion för att visa tid
+    // function for showing time
     dateTime: function(messageID){
         alert("Message was created " + MessageBoard.messages[messageID].getDate().toDateString() + " at " + MessageBoard.messages[messageID].getDate().toLocaleTimeString());
     }
 
 };
-    window.onload = MessageBoard.init;  //init körs när sidan laddats
+    window.onload = MessageBoard.init;  //init run when site is loaded
         
     
