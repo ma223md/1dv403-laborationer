@@ -109,7 +109,7 @@ var MessageBoard = {
     // funktion för att radera meddelande
     deleteMessage: function(messageID){
         // kolla om användaren vill radera meddelandet
-        var check = confirm("Är du säker på att du vill radera meddelandet?");
+        var check = confirm("Are you sure you want to delete this message?");
         if (check === true){
             MessageBoard.messages.splice(messageID,1)
             MessageBoard.renderMessages();
@@ -118,7 +118,7 @@ var MessageBoard = {
     
     // funktion för att visa tid
     dateTime: function(messageID){
-        alert(MessageBoard.messages[messageID].getDateText(true));
+        alert("Message was created " + MessageBoard.messages[messageID].getDate().toDateString() + " at " + MessageBoard.messages[messageID].getDate().toLocaleTimeString());
     }
 
 };
