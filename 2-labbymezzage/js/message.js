@@ -24,22 +24,13 @@ function Message(message, date) {
     };
     
     Message.prototype.getHTMLText = function() {
-        return this.getText();
+        return this.getText().replace(/[\n\r]/g, "<br/>");
     };
     
-Message.prototype.getDateText = function(){
-    
-    var d = this.getDate();
-    var h = addZeroToDate(d.getHours());
-    var m = addZeroToDate(d.getMinutes());
-    var s = addZeroToDate(d.getSeconds());
-    var dateText = h + ":" + m + ":" + s;
-    return dateText;
-};
-
-function addZeroToDate (i){
-    if (i < 10){
-        i = "0" + i;
-    }
-    return i;
-}
+    Message.prototype.getDateText = function() {
+        var currentDate = this.getDate(),
+        dateText = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+        
+        return dateText;
+        //return this.getDate().toLocalTimeString();
+    };
