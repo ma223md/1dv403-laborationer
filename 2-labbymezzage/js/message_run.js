@@ -66,7 +66,7 @@ var MessageBoard = {
         messageDiv = document.createElement("div");
         div.appendChild(messageDiv);
         
-        // create paragraph for date
+        // create time tag for date
         var date = document.createElement("time");
         date.innerHTML = MessageBoard.messages[messageID].getDateText();
         // date.className = "date"
@@ -84,6 +84,7 @@ var MessageBoard = {
         // create delete icon
         var deleteIcon = document.createElement("img");
         deleteIcon.setAttribute('src', 'pics/delete_16.png')
+        deleteIcon.setAttribute('alt', 'Icon in shape of a trashcan');
         deleteIcon.style.width = "16px";
         deleteIcon.style.height = "16px";
         date.appendChild(deleteIcon);
@@ -93,8 +94,20 @@ var MessageBoard = {
         text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
         div.appendChild(text);
         
-
+        deleteIcon.onclick = function(){
+            MessageBoard.deleteMessage(messageID);
+        }
     },
+    
+    // funktion för att radera meddelande
+    deleteMessage: function(messageID){
+        // kolla om användaren vill radera meddelandet
+        var check = confirm("Är du säker på att du vill radera meddelandet?");
+        if (check === true){
+            MessageBoard.messages.splice(messageID,1)
+            MessageBoard.renderMessages();
+        }
+    }
 
 };
     window.onload = MessageBoard.init;  //init körs när sidan laddats
