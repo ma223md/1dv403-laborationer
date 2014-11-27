@@ -29,8 +29,8 @@ function Message(message, date) {
     
     Message.prototype.getDateText = function() {
         var currentDate = this.getDate(),
-        dateText = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds();
+        //dateText = currentDate.toLocalTimeString();
+        dateText = currentDate.getHours() + ":" + currentDate.getMinutes() + ":" + currentDate.getSeconds() + "  ";
         
         return dateText;
-        //return this.getDate().toLocalTimeString();
     };
