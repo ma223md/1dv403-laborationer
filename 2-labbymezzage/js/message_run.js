@@ -7,17 +7,10 @@ var MessageBoard = {
         init: function(){
             var button = document.getElementById("button"),
             textArea = document.getElementById("messagetext");
-            //mess = document.getElementById("messagetext");
-            
+            // print current number of messages
             document.getElementById("counter").innerHTML = "0";
-            
+            // create message when button is clicked
             button.onclick = MessageBoard.createMessage;
-            
-            /*button.onclick = function(){
-                var mess = document.getElementById("messagetext").value;
-                document.getElementById("messageboard").innerHTML = mess;
-                return false;
-            }; */
 
         // function for sending with enter, and adding newline with enter+shift
         textArea.onkeydown = function(e){
