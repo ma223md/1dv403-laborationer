@@ -94,9 +94,16 @@ var MessageBoard = {
         text.innerHTML = MessageBoard.messages[messageID].getHTMLText();
         div.appendChild(text);
         
+        // kalla på raderingsfunktion vid klick på ikonen
         deleteIcon.onclick = function(){
             MessageBoard.deleteMessage(messageID);
         }
+        
+        // visa ruta med tid i vid klick på ikonen
+        clock.onclick = function(){
+            MessageBoard.dateTime(messageID);
+        }
+        
     },
     
     // funktion för att radera meddelande
@@ -107,6 +114,11 @@ var MessageBoard = {
             MessageBoard.messages.splice(messageID,1)
             MessageBoard.renderMessages();
         }
+    },
+    
+    // funktion för att visa tid
+    dateTime: function(messageID){
+        alert(MessageBoard.messages[messageID].getDateText(true));
     }
 
 };

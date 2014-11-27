@@ -52,6 +52,13 @@ p {
     color: #58544A;
 }
 
+time {
+    font-family: article;
+    font-size: 16px;
+    float: right;
+    margin-right: 20px;
+}
+
 #messagecount {
     font-size: 12px;
     text-align: right;
