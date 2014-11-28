@@ -50,6 +50,7 @@ p {
     border-width: 1px;
     border-color: #837D70;
     color: #58544A;
+    word-wrap: break-word;
 }
 
 time {

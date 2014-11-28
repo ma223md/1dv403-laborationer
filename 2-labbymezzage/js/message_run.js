@@ -13,12 +13,12 @@ var MessageBoard = {
             button.onclick = MessageBoard.createMessage;
 
         // function for sending with enter, and adding newline with enter+shift
-        textArea.onkeydown = function(e){
-             if (e.keyCode === 13 && !e.shiftKey){
-                     MessageBoard.createMessage();
-                     return false;
-                 }
-            }
+            textArea.onkeydown = function(e){
+                 if (e.keyCode === 13 && !e.shiftKey){
+                         MessageBoard.createMessage();
+                         return false;
+                     }
+                }
         },
 
     
