@@ -1,11 +1,11 @@
 @font-face {
     font-family: headline;
-    src: url(../2-labbymezzage/fonts/OldLondon.ttf);
+    src: url(../3-gameon/memory/fonts/OldLondon.ttf);
 }
 
 @font-face {
     font-family: article;
-    src: url(fonts/linowrite.ttf);
+    src: url(../3-gameon/memory/fonts/linowrite.ttf);
 }
 
 body 
@@ -17,6 +17,8 @@ header h1 {
     text-align: center;
     padding-top: 15px;
     color: #58544A;
+    font-family: headline;
+    font-size: 50px;
 }
 
 #container {
@@ -50,33 +52,7 @@ p {
     border-width: 1px;
     border-color: #837D70;
     color: #58544A;
-}
-
-#messagecount {
-    font-size: 12px;
-    text-align: right;
-    margin-right: 20px;
-    color: #58544A;
-}
-
-h1 {
-    font-family: headline;
-    font-size: 50px;
-}
-
-textarea {
-    resize: none;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #E2DAC8;
-    border-color: #837D70;
-}
-
-input {
-    display: block;
-    margin-left: auto;
-    margin-right: 95px;
+    word-wrap: break-word;
 }
 
 footer {
