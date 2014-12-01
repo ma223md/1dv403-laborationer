@@ -1,11 +1,11 @@
 @font-face {
     font-family: headline;
-    src: url(../3-gameon/memory/fonts/OldLondon.ttf);
+    src: url(../fonts/OldLondon.ttf);
 }
 
 @font-face {
     font-family: article;
-    src: url(../3-gameon/memory/fonts/linowrite.ttf);
+    src: url(../fonts/linowrite.ttf);
 }
 
 body 
