@@ -75,7 +75,7 @@ var MessageBoard = {
         
         // create delete icon
         var deleteIcon = document.createElement("img");
-        deleteIcon.setAttribute('src', 'pics/delete_16.png')
+        deleteIcon.setAttribute('src', 'pics/delete_16.png');
         deleteIcon.setAttribute('alt', 'Icon in shape of a trashcan');
         deleteIcon.style.width = "16px";
         deleteIcon.style.height = "16px";

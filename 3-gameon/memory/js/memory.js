@@ -14,27 +14,23 @@ var Memory = {
         Memory.memoryBricks = RandomGenerator.getPictureArray(4,4);
         // create new elements to test randomized array
         var div = document.getElementById("memoryboard");
-        
-        // create table for memoryboard
-        // var memorytable = document.createElement("table")
-        // div.appendChild(memorytable);
-        
 
-        // add each arrayitem to table
+        // Create memory bricks
         for (var i = 0; i < Memory.memoryBricks.length; i++){
             // create new link and image
             var link = document.createElement("a"),
-            image = document.createElement("img"),
-            arrayTest = Memory.memoryBricks[i];
+            image = document.createElement("img");
             
             link.setAttribute("class", "memorybrick");
+            link.setAttribute("href", "#");
+            image.setAttribute('src', 'pics/memory_0.png');
             
             div.appendChild(link);
             link.appendChild(image);
-            link.innerHTML = Memory.memoryBricks[i];
+            //link.innerHTML = Memory.memoryBricks[i];
+            
             // onclick funtion goes here
-            //call function for creating brick
-            //newBrick(i);
+            
         }
                 
         //function for creating bricks

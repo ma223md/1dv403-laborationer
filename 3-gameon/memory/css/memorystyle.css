@@ -46,6 +46,10 @@ main {
     margin-bottom: 20px;
 }
 
+img {
+    width: 135px;
+}
+
 p {
     font-family: article;
     font-size: 14px;
