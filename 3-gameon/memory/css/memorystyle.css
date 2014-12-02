@@ -40,6 +40,12 @@ main {
     border-color: #837D70;
 }
 
+#memoryboard {
+    margin-left: 22px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 p {
     font-family: article;
     font-size: 14px;
