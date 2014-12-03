@@ -3,51 +3,46 @@
 var Memory = {
     // define variables
     memoryBricks: [],
+    turnedBricks: [],
     
     init: function(){
-        // create a memory game, call function
-        Memory.newGame();
-    },
-    
-    // function for new game
-    newGame: function(){
         Memory.memoryBricks = RandomGenerator.getPictureArray(4,4);
-        // create new elements to test randomized array
-        var div = document.getElementById("memoryboard");
-
+        
         // Create memory bricks
         for (var i = 0; i < Memory.memoryBricks.length; i++){
-            // create new link and image
+            newBrick(i);
+        }
+        
+        function newBrick(i){
+             // create new link and image
+            var div = document.getElementById("memoryboard");
             var link = document.createElement("a"),
             image = document.createElement("img");
             
             link.setAttribute("class", "memorybrick");
             link.setAttribute("href", "#");
-            image.setAttribute('src', 'pics/memory_0.png');
+            image.setAttribute('src', 'pics/0.png');
+            image.setAttribute("id", Memory.memoryBricks[i]);
             
             div.appendChild(link);
             link.appendChild(image);
-            //link.innerHTML = Memory.memoryBricks[i];
             
             // onclick funtion goes here
-            
+            link.onClick = function(){
+                turnBrick(Memory.memoryBricks[i]);
+                return false;
+            };
         }
-                
-        //function for creating bricks
-        var newBrick = function(i){
-            // create new link and image
-            var link = document.createElement("a"),
-            image = document.createElement("img"),
-            arrayTest = Memory.memoryBricks[i];
+                    
+        //function for turning bricks
+        function turnBrick(id){
+            Memory.turnedBricks.push(this);
             
-            link.setAttribute("class", "memorybrick");
-            
-            div.appendChild(link);
-            link.appendchild(arrayTest);
-            // onclick funtion goes here
+            var brickImage = document.getElementById(Memory.MemoryBricks[id]);
+            brickImage.setAttribute("src", "pics/" + Memory.MemoryBricks[id] + ".png");
         }
 
-    },
+    }
 };
 
 window.onload = Memory.init;  //init run when site is loaded
