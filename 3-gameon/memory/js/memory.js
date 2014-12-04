@@ -4,6 +4,7 @@ var Memory = {
     // define variables
     memoryBricks: [],
     turnedBricks: [],
+    lastBrick: undefined,
     
     init: function(){
         Memory.memoryBricks = RandomGenerator.getPictureArray(4,4);
@@ -22,24 +23,38 @@ var Memory = {
             link.setAttribute("class", "memorybrick");
             link.setAttribute("href", "#");
             image.setAttribute('src', 'pics/0.png');
-            image.setAttribute("id", Memory.memoryBricks[i]);
+            image.setAttribute("id", i);
             
             div.appendChild(link);
             link.appendChild(image);
             
-            // onclick funtion goes here
-            link.onClick = function(){
-                turnBrick(Memory.memoryBricks[i]);
+            // onclick function goes here
+            link.onclick = function(){
+                turnBrick(i);
                 return false;
             };
         }
                     
         //function for turning bricks
-        function turnBrick(id){
-            Memory.turnedBricks.push(this);
-            
-            var brickImage = document.getElementById(Memory.MemoryBricks[id]);
-            brickImage.setAttribute("src", "pics/" + Memory.MemoryBricks[id] + ".png");
+        function turnBrick(brickID){
+            // turn chosen brick, assign image
+            var currentBrickImage = document.getElementById(brickID);
+            var lastBrickImage = document.getElementById(brickID);
+            currentBrickImage.setAttribute("src", "pics/" + Memory.memoryBricks[brickID] + ".png");
+          
+            if(lastBrick !== undefined) {
+            	lastBrick = brickID;
+            } else if (Memory.memoryBricks[lastBrick] === Memory.memoryBricks[brickID]) {
+            	// MATCH, DO NOTHING?
+                lastBrick = undefined;
+            } else {
+             	// NON MATCH
+                /*
+                currentBrickImage.setAttribute("src", "pics/0.png");
+                lastBrickImage.setAttribute("src", "pics/0.png");
+                */
+                lastBrick = undefined;
+            }
         }
 
     }
