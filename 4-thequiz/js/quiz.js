@@ -8,8 +8,8 @@ window.onload = function(){
         // testa att get fungerar
         xhr.onreadystatechange = function(){
         	if(xhr.readyState === 4 && xhr.status === 200){
-        	    var fetch = JSON.parse(xhr.responseText);
-                console.log(fetch);
+        	    var q = JSON.parse(xhr.responseText);
+                console.log(q);
         	}
         };
         	xhr.open("GET", "http://vhost3.lnu.se:20080/question/1", true);
@@ -19,18 +19,30 @@ window.onload = function(){
         // testa att post fungerar
         xhr.onreadystatechange = function(){
         	if(xhr.readyState === 4 && xhr.status === 200){
-        	    var fetch = JSON.parse(xhr.responseText);
-                console.log(fetch);
+        	    var a = JSON.parse(xhr.responseText);
+                console.log(a);
         	}
         };
         	xhr.open("POST", "http://vhost3.lnu.se:20080/answer/1", true);
             xhr.setRequestHeader('Content-Type', 'application/json');
             
             var answer = {
-                "answer": "1"
+                "answer": "2"
             }
             
             xhr.send(JSON.stringify(answer));
+            
+            
+        // testa nästa adress
+        xhr.onreadystatechange = function(){
+        	if(xhr.readyState === 4 && xhr.status === 200){
+        	    var next = JSON.parse(xhr.responseText);
+                console.log(next);
+        	}
+        };
+        
+        xhr.open("GET", "http://vhost3.lnu.se:20080/question/321")
+        xhr.send(null);
         
         
         // var quiz = new Quiz(); // create quiz when site is loaded
