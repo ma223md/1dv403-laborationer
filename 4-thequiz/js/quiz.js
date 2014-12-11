@@ -68,58 +68,60 @@ function Quiz(){
     startButton.onclick = function(){
         newQuestion("http://vhost3.lnu.se:20080/question/1");
     };
-    //newQuestion("http://vhost3.lnu.se:20080/question/1");
-};
-
-function newQuestion(qestion){
-    //define variables
-    var xhr = new XMLHttpRequest(),
-    qObject;
     
-    xhr.onreadystatechange = function(){
-    	if(xhr.readyState === 4 && xhr.status === 200){
-    	    // get question and parse it
-    	    qObject = JSON.parse(xhr.responseText);
-            Quiz.qArray.push(qObject);
-            
-            // clean board
-            var quizBoard = document.getElementById("quizarea");
-            quizBoard.innerHTML = "";
-            
-            var form = document.createElement("form"),
-            questionText = document.createElement("p"),
-            inputArea = document.createElement("textarea"),
-            inputButton = document.createElement("input");
-            
-            // set attributes for textarea
-            inputArea.setAttribute("cols", "15");
-            inputArea.setAttribute("rows", "4");
-            inputArea.setAttribute("placeholder", "Input answer here..")
-            
-            // set attributes for send button
-            inputButton.setAttribute("type", "button");
-            inputButton.setAttribute("value", "Answer");
-            
-            // append created elements
-            quizBoard.appendChild(form);
-            form.appendChild(inputArea);
-            form.appendChild(inputButton);
-            
-            
-            quizBoard.appendChild(form);
-            form.appendChild(questionText)
-            form.appendChild(inputArea);
-            form.appendChild(inputButton);
-            
-            // print question
-            questionText.innerHTML = qObject.question;
-    	};
-    	
-    	xhr.open("GET", "http://vhost3.lnu.se:20080/question/1", true);
-        // skicka data med requesten, ange null om ingen data skall skickas
-        xhr.send(null);
+    // get question
+    function newQuestion(url){
+        //define variables
+        var xhr = new XMLHttpRequest(),
+        qObject;
+        
+        xhr.onreadystatechange = function(){
+        	if(xhr.readyState === 4 && xhr.status === 200){
+        	    // get question and parse it
+        	    qObject = JSON.parse(xhr.responseText);
+                Quiz.qArray.push(qObject);
+                
+                // clean board
+                var quizBoard = document.getElementById("quizarea");
+                quizBoard.innerHTML = "";
+                
+                var form = document.createElement("form"),
+                questionText = document.createElement("p"),
+                inputArea = document.createElement("textarea"),
+                inputButton = document.createElement("input");
+                
+                // set attributes for textarea
+                inputArea.setAttribute("cols", "15");
+                inputArea.setAttribute("rows", "4");
+                inputArea.setAttribute("placeholder", "Input answer here..")
+                
+                // set attributes for send button
+                inputButton.setAttribute("type", "button");
+                inputButton.setAttribute("value", "Answer");
+                
+                // append created elements
+                quizBoard.appendChild(form);
+                form.appendChild(inputArea);
+                form.appendChild(inputButton);
+                
+                
+                quizBoard.appendChild(form);
+                form.appendChild(questionText)
+                form.appendChild(inputArea);
+                form.appendChild(inputButton);
+                
+                // print question
+                questionText.innerHTML = qObject.question;
+        	};
+        	
+        	xhr.open("GET", "http://vhost3.lnu.se:20080/question/1", true);
+            // skicka data med requesten, ange null om ingen data skall skickas
+            xhr.send(null);
+        };
     };
 };
+
+
 
 window.onload = function(){
         new Quiz();
