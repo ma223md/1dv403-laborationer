@@ -46,6 +46,11 @@
 
 // create quiz
 function Quiz(){
+    //define variables
+    var qArray = [],
+    qCounter = 0,
+    aCounter = 0;
+    
     // get quizboard
     var quizBoard = document.getElementById("quizarea"),
     // create start page elements
@@ -61,10 +66,6 @@ function Quiz(){
     quizBoard.appendChild(welcomeText);
     quizBoard.appendChild(startButton);
     welcomeText.innerHTML = "Welcome! This quiz will test your mind to it's utmost limits!";
-    //define variables
-    var qArray = [],
-    qCounter = 0,
-    aCounter = 0;
     
     // get first question
     startButton.onclick = function(){
@@ -75,8 +76,7 @@ function Quiz(){
     function newQuestion(url){
         //define variables
         var xhr = new XMLHttpRequest(),
-        qObject,
-        answerText;
+        qObject;
         
         // clean board
         var quizBoard = document.getElementById("quizarea");
@@ -86,6 +86,9 @@ function Quiz(){
         questionText = document.createElement("p"),
         inputArea = document.createElement("textarea"),
         inputButton = document.createElement("input");
+        
+        // set id for form
+        form.setAttribute("id", "form");
         
         // set attributes for textarea
         inputArea.setAttribute("cols", "15");
@@ -106,7 +109,7 @@ function Quiz(){
         	if(xhr.readyState === 4 && xhr.status === 200){
         	    // get question and parse it
         	    qObject = JSON.parse(xhr.responseText);
-                qArray.push(qObject);
+                //qArray.push(qObject);
                 qCounter++;
                 
                 // print question
@@ -119,15 +122,38 @@ function Quiz(){
         xhr.send(null);
         
         // call answer function on click
-        inputButton.onclick() = function(){
-            answerText = inputArea.value;
+        inputButton.onclick = function(){
+            // answerText = inputArea.value;
             newAnswer(qObject.nextURL);
-        }
+        };
     }
     
     // answer function goes here..
     function newAnswer(url){
-        var xhrAnswer = new XMLHttpRequest()
+        var xhrAnswer = new XMLHttpRequest(),
+        aObject,
+        answerMessage,
+        form = document.getElementById("form");
+        
+        // create new elements
+        answerMessage = document.createElement("p");
+        form.appendChild(answerMessage)
+        
+        xhrAnswer.onreadystatechange = function() {
+            if(xhrAnswer.readyState === 4 && xhrAnswer.status === 200){
+                // get answer and parse
+                aObject = JSON.parse(xhrAnswer.responseText);
+                
+                // render message
+                answerMessage.innerHTML = aObject.message;
+            }
+            
+            //xhrAnswer.send(JSON.stringify(inputArea.value));
+            
+            xhrAnswer.open("POST", url, true);
+            xhrAnswer.setRequestHeader('Content-Type', 'application/json')
+            xhrAnswer.send(null);
+        }
     }
 }
 
