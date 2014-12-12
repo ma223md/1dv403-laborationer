@@ -49,7 +49,11 @@ function Quiz(){
     //define variables
     var qArray = [],
     qCounter = 0,
-    aCounter = 0;
+    aCounter = 0,
+    form,
+    questionText,
+    inputArea,
+    inputButton;
     
     // get quizboard
     var quizBoard = document.getElementById("quizarea"),
@@ -82,7 +86,7 @@ function Quiz(){
         var quizBoard = document.getElementById("quizarea");
         quizBoard.innerHTML = "";
         
-        var form = document.createElement("form"),
+        form = document.createElement("form"),
         questionText = document.createElement("p"),
         inputArea = document.createElement("textarea"),
         inputButton = document.createElement("input");
@@ -144,15 +148,26 @@ function Quiz(){
                 // get answer and parse
                 aObject = JSON.parse(xhrAnswer.responseText);
                 
-                // render message
-                answerMessage.innerHTML = aObject.message;
+                if (aObject.message === "Correct answer!"){
+                    // render message
+                    answerMessage.innerHTML = aObject.message;
+                    //call function with next url
+                    newQuestion(aObject.nextURL);
+                }
+                
+                else {
+                    // add to answer counter
+                    aCounter++;
+                    answerMessage.innerHTML = "Incorrect, try again!"
+                }
             }
-            
-            //xhrAnswer.send(JSON.stringify(inputArea.value));
-            
+            // create answer object
+            var sendAnswer = JSON.stringify({"answer": inputArea.value});
+            // send answer
             xhrAnswer.open("POST", url, true);
             xhrAnswer.setRequestHeader('Content-Type', 'application/json')
-            xhrAnswer.send(null);
+            xhrAnswer.send(sendAnswer);
+            
         }
     }
 }
