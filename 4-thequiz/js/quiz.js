@@ -62,7 +62,9 @@ function Quiz(){
     quizBoard.appendChild(startButton);
     welcomeText.innerHTML = "Welcome! This quiz will test your mind to it's utmost limits!";
     //define variables
-    var qArray = [];
+    var qArray = [],
+    qCounter = 0,
+    aCounter = 0;
     
     // get first question
     startButton.onclick = function(){
@@ -73,7 +75,8 @@ function Quiz(){
     function newQuestion(url){
         //define variables
         var xhr = new XMLHttpRequest(),
-        qObject;
+        qObject,
+        answerText;
         
         // clean board
         var quizBoard = document.getElementById("quizarea");
@@ -103,24 +106,29 @@ function Quiz(){
         	if(xhr.readyState === 4 && xhr.status === 200){
         	    // get question and parse it
         	    qObject = JSON.parse(xhr.responseText);
-                Quiz.qArray.push(qObject);
+                qArray.push(qObject);
+                qCounter++;
                 
                 // print question
                 questionText.innerHTML = qObject.question;
         	}
-        	
-        	xhr.open("GET", "http://vhost3.lnu.se:20080/question/1", true);
-            // skicka data med requesten, ange null om ingen data skall skickas
-            xhr.send(null);
         };
         
-        // call answer function
-        // inputButton.onclick() = function(){
-            
-        // }
+    	xhr.open("GET", url, true);
+        // skicka data med requesten, ange null om ingen data skall skickas
+        xhr.send(null);
+        
+        // call answer function on click
+        inputButton.onclick() = function(){
+            answerText = inputArea.value;
+            newAnswer(qObject.nextURL);
+        }
     }
     
     // answer function goes here..
+    function newAnswer(url){
+        var xhrAnswer = new XMLHttpRequest()
+    }
 }
 
 
