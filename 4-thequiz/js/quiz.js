@@ -108,7 +108,7 @@ function Quiz(){
                 // get answer and parse
                 aObject = JSON.parse(xhrAnswer.responseText);
                 
-                answerMessage.innerHTML = aObject.message;
+                // answerMessage.innerHTML = aObject.message;
                 
                 if (aObject.message === "Correct answer!"){
                     // render message
@@ -117,7 +117,11 @@ function Quiz(){
                     
                     //call function with next url
                     aCounter = 0;
-                    //newQuestion(aObject.nextURL);
+                    
+                    setTimeout(function() {
+                        newQuestion(aObject.nextURL);
+                    }, 2000);
+                    
                 }
                 
                 else {
