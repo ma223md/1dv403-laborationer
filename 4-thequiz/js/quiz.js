@@ -13,6 +13,7 @@ function Quiz(){
     
     // get quizboard
     var quizBoard = document.getElementById("quizarea"),
+    
     // create start page elements
     startButton = document.createElement("input"),
     welcomeText = document.createElement("p");
@@ -36,7 +37,8 @@ function Quiz(){
     function newQuestion(url){
         //define variables
         var xhr = new XMLHttpRequest(),
-        qObject;
+        qObject,
+        answerMessage;
         
         // clean board
         var quizBoard = document.getElementById("quizarea");
@@ -46,9 +48,12 @@ function Quiz(){
         questionText = document.createElement("p"),
         inputArea = document.createElement("textarea"),
         inputButton = document.createElement("input");
+        answerMessage = document.createElement("p");
         
-        // set id for form
+        
+        // set ids
         form.setAttribute("id", "form");
+        answerMessage.setAttribute("id", "answerparagraph")
         
         // set attributes for textarea
         inputArea.setAttribute("cols", "15");
@@ -64,6 +69,7 @@ function Quiz(){
         form.appendChild(questionText);
         form.appendChild(inputArea);
         form.appendChild(inputButton);
+        form.appendChild(answerMessage);
         
         xhr.onreadystatechange = function(){
         	if(xhr.readyState === 4 && xhr.status === 200){
@@ -91,12 +97,11 @@ function Quiz(){
     function newAnswer(url){
         var xhrAnswer = new XMLHttpRequest(),
         aObject,
-        answerMessage,
-        form = document.getElementById("form");
+        answerMessage = document.getElementById("answerparagraph");
         
         // create new elements
-        answerMessage = document.createElement("p");
-        form.appendChild(answerMessage);
+        // answerMessage = document.createElement("p");
+        // form.appendChild(answerMessage);
         
         xhrAnswer.onreadystatechange = function() {
             if(xhrAnswer.readyState === 4){
@@ -107,9 +112,12 @@ function Quiz(){
                 
                 if (aObject.message === "Correct answer!"){
                     // render message
-                    answerMessage.innerHTML = aObject.message;
+                    aCounter++;
+                    answerMessage.innerHTML = aObject.message + " You made " + aCounter + " guesses!";
+                    
                     //call function with next url
-                    newQuestion(aObject.nextURL);
+                    aCounter = 0;
+                    //newQuestion(aObject.nextURL);
                 }
                 
                 else {
