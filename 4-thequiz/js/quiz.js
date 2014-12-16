@@ -1,49 +1,5 @@
 "use strict";
 
-        //var quiz = new Quiz(); // create quiz when site is loaded
-        
-        // var xhr = new XMLHttpRequest();
-        
-        // // testa att get fungerar
-        // xhr.onreadystatechange = function(){
-        // 	if(xhr.readyState === 4 && xhr.status === 200){
-        // 	    var q = JSON.parse(xhr.responseText);
-        //         console.log(q);
-        // 	}
-        // };
-        // 	xhr.open("GET", "http://vhost3.lnu.se:20080/question/1", true);
-        //     // skicka data med requesten, ange null om ingen data skall skickas
-        //     xhr.send(null);
-        
-        // // testa att post fungerar
-        // xhr.onreadystatechange = function(){
-        // 	if(xhr.readyState === 4 && xhr.status === 200){
-        // 	    var a = JSON.parse(xhr.responseText);
-        //         console.log(a);
-        // 	}
-        // };
-        // 	xhr.open("POST", "http://vhost3.lnu.se:20080/answer/1", true);
-        //     xhr.setRequestHeader('Content-Type', 'application/json');
-            
-        //     var answer = {
-        //         "answer": "2"
-        //     }
-            
-        //     xhr.send(JSON.stringify(answer));
-            
-            
-        // // testa nästa adress
-        // xhr.onreadystatechange = function(){
-        // 	if(xhr.readyState === 4 && xhr.status === 200){
-        // 	    var next = JSON.parse(xhr.responseText);
-        //         console.log(next);
-        // 	}
-        // };
-        
-        // xhr.open("GET", "http://vhost3.lnu.se:20080/question/321")
-        // xhr.send(null);
-
-
 // create quiz
 function Quiz(){
     //define variables
@@ -113,7 +69,7 @@ function Quiz(){
         	if(xhr.readyState === 4 && xhr.status === 200){
         	    // get question and parse it
         	    qObject = JSON.parse(xhr.responseText);
-                //qArray.push(qObject);
+                qArray.push(qObject);
                 qCounter++;
                 
                 // print question
@@ -127,7 +83,6 @@ function Quiz(){
         
         // call answer function on click
         inputButton.onclick = function(){
-            // answerText = inputArea.value;
             newAnswer(qObject.nextURL);
         };
     }
@@ -141,12 +96,14 @@ function Quiz(){
         
         // create new elements
         answerMessage = document.createElement("p");
-        form.appendChild(answerMessage)
+        form.appendChild(answerMessage);
         
         xhrAnswer.onreadystatechange = function() {
-            if(xhrAnswer.readyState === 4 && xhrAnswer.status === 200){
+            if(xhrAnswer.readyState === 4){
                 // get answer and parse
                 aObject = JSON.parse(xhrAnswer.responseText);
+                
+                answerMessage.innerHTML = aObject.message;
                 
                 if (aObject.message === "Correct answer!"){
                     // render message
@@ -158,24 +115,23 @@ function Quiz(){
                 else {
                     // add to answer counter
                     aCounter++;
-                    answerMessage.innerHTML = "Incorrect, try again!"
+                    answerMessage.innerHTML = "Incorrect, try again!";
                 }
             }
-            // create answer object
-            var sendAnswer = JSON.stringify({"answer": inputArea.value});
-            // send answer
-            xhrAnswer.open("POST", url, true);
-            xhrAnswer.setRequestHeader('Content-Type', 'application/json')
-            xhrAnswer.send(sendAnswer);
-            
-        }
+        };
+        // create answer object
+        var sendAnswer = JSON.stringify({"answer": inputArea.value});
+        // send answer
+        xhrAnswer.open("POST", url, true);
+        xhrAnswer.setRequestHeader('Content-Type', 'application/json');
+        xhrAnswer.send(sendAnswer);
     }
 }
 
 
 window.onload = function(){
         new Quiz();
-    }
+    };
 
 
 
