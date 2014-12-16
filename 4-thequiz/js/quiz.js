@@ -73,7 +73,7 @@ function Quiz(){
                 qCounter++;
                 
                 // print question
-                questionText.innerHTML = qObject.question;
+                questionText.innerHTML = "Question " + qCounter + ": " + qObject.question;
         	}
         };
         
