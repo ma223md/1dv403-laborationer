@@ -3,7 +3,7 @@
 // create quiz
 function Quiz(){
     //define variables
-    var qArray = [],
+    var aArray = [],
     qCounter = 0,
     aCounter = 0,
     form,
@@ -75,7 +75,7 @@ function Quiz(){
         	if(xhr.readyState === 4 && xhr.status === 200){
         	    // get question and parse it
         	    qObject = JSON.parse(xhr.responseText);
-                qArray.push(qObject);
+                //qArray.push(qObject);
                 qCounter++;
                 
                 // print question
@@ -99,35 +99,32 @@ function Quiz(){
         aObject,
         answerMessage = document.getElementById("answerparagraph");
         
-        // create new elements
-        // answerMessage = document.createElement("p");
-        // form.appendChild(answerMessage);
-        
         xhrAnswer.onreadystatechange = function() {
             if(xhrAnswer.readyState === 4){
-                // get answer and parse
-                aObject = JSON.parse(xhrAnswer.responseText);
                 
-                // answerMessage.innerHTML = aObject.message;
+                aObject = JSON.parse(xhrAnswer.responseText); // get answer and parse
                 
                 if (aObject.message === "Correct answer!"){
                     // render message
                     aCounter++;
-                    answerMessage.innerHTML = aObject.message + " You made " + aCounter + " guesses!";
+                    answerMessage.innerHTML = aObject.message + " You made " + aCounter + " guesses! Wait for the next question";
+                    
+                    aArray.push(aCounter); // add number of guesses to array
+                    aCounter = 0;  // empty counter for next question
                     
                     //call function with next url
-                    aCounter = 0;
-                    
                     setTimeout(function() {
                         newQuestion(aObject.nextURL);
                     }, 2000);
-                    
                 }
                 
                 else {
-                    // add to answer counter
-                    aCounter++;
+                    aCounter++; // add to answer counter
                     answerMessage.innerHTML = "Incorrect, try again!";
+                    
+                    setTimeout(function() {
+                        answerMessage.innerHTML = "";
+                    }, 1500);
                 }
             }
         };
