@@ -4,6 +4,8 @@
 function Quiz(){
     //define variables
     var aArray = [],
+    qArray = [],
+    results,
     qCounter = 0,
     aCounter = 0,
     form,
@@ -75,7 +77,7 @@ function Quiz(){
         	if(xhr.readyState === 4 && xhr.status === 200){
         	    // get question and parse it
         	    qObject = JSON.parse(xhr.responseText);
-                //qArray.push(qObject);
+                qArray.push(qObject);
                 qCounter++;
                 
                 // print question
@@ -104,8 +106,20 @@ function Quiz(){
                 
                 aObject = JSON.parse(xhrAnswer.responseText); // get answer and parse
                 
-                if (aObject.message === "Correct answer!"){
-                    // render message
+                if (!aObject.hasOwnProperty('nextURL') && aObject.message === "Correct answer!") {
+                    quizBoard.innerHTML = "";
+                    quizBoard.appendChild(answerMessage)
+                    aCounter++;
+                    
+                    for (var i = 0; i < qArray.length; i++){
+                        results += qArray[i].question + ": " + aArray[i] + " gissningar <br>";
+                    }
+                    
+                    answerMessage.innerHTML = "Quiz completed! <br><br>" + results;
+                    return false;
+                }
+                
+                if (aObject.message === "Correct answer!") {
                     aCounter++;
                     answerMessage.innerHTML = aObject.message + " You made " + aCounter + " guesses! Wait for the next question";
                     
