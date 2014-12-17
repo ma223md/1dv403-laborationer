@@ -5,7 +5,7 @@ function Quiz(){
     //define variables
     var aArray = [],
     qArray = [],
-    results,
+    results = "",
     qCounter = 0,
     aCounter = 0,
     form,
@@ -108,16 +108,19 @@ function Quiz(){
                 
                 if (!aObject.hasOwnProperty('nextURL') && aObject.message === "Correct answer!") {
                     quizBoard.innerHTML = "";
-                    quizBoard.appendChild(answerMessage)
+                    quizBoard.appendChild(answerMessage);
                     
                     // add to guess counter and push
                     aCounter++;
                     aArray.push(aCounter);
                     
                     for (var i = 0; i < qArray.length; i++){
-                        results += qArray[i].question + ": " + aArray[i] + " gissningar <br>";
+                        console.log(qArray[i].question);
+                        if (qArray[i].question){
+                            results += qArray[i].question + ": " + aArray[i] + " gissningar <br>";
+                        }
                     }
-                    
+                    console.log(results);
                     answerMessage.innerHTML = "Quiz completed! <br><br>" + results;
                     return false;
                 }
@@ -132,7 +135,7 @@ function Quiz(){
                     //call function with next url
                     setTimeout(function() {
                         newQuestion(aObject.nextURL);
-                    }, 2000);
+                    }, 0);
                 }
                 
                 else {
