@@ -109,7 +109,10 @@ function Quiz(){
                 if (!aObject.hasOwnProperty('nextURL') && aObject.message === "Correct answer!") {
                     quizBoard.innerHTML = "";
                     quizBoard.appendChild(answerMessage)
+                    
+                    // add to guess counter and push
                     aCounter++;
+                    aArray.push(aCounter);
                     
                     for (var i = 0; i < qArray.length; i++){
                         results += qArray[i].question + ": " + aArray[i] + " gissningar <br>";
