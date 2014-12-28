@@ -21,7 +21,7 @@ header h1 {
     font-size: 50px;
 }
 
-#container {
+#desktop {
     display: block;
     position: fixed;
     width: 100%;
@@ -39,7 +39,7 @@ main {
     position: fixed;
     bottom: 10px;
     right: 10px;
-    left: 10px;
+    left: 15px;
     width: 100%;
     border-style: solid;
     border-width: 1px;
