@@ -115,12 +115,10 @@ function Quiz(){
                     aArray.push(aCounter);
                     
                     for (var i = 0; i < qArray.length; i++){
-                        console.log(qArray[i].question);
                         if (qArray[i].question){
                             results += qArray[i].question + ": " + aArray[i] + " gissningar <br>";
                         }
                     }
-                    console.log(results);
                     answerMessage.innerHTML = "Quiz completed! <br><br>" + results;
                     return false;
                 }
