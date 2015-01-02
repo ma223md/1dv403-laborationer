@@ -7,7 +7,7 @@ function Navigation(desktop){
 }
 
 // function for new icons in navigation
-Navigation.prototype.newIcon = function(imgURL, width, height){
+Navigation.prototype.newIcon = function(imgURL, width, name){
     var icon = document.createElement("img");
     
     //set attributes
@@ -21,6 +21,9 @@ Navigation.prototype.newIcon = function(imgURL, width, height){
     // onclick function
     icon.onclick = function(e){
         // create new window
+        //e.preventDefault();
+        var window = new Window(Navigation.desktop, icon);
+        return false;
     }
 }
 
