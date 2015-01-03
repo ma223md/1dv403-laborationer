@@ -60,16 +60,20 @@ p {
 }
 
 .window {
-	background:#E4E495;
+	background:#E3DEBF;
 	font-size: 1.2em;
 	color:black;
 	width:500px;
 	padding:10px;
-	border:6px solid #D4D459;
+	border:3px solid black;
 	overflow:hidden;
 	margin:auto;
 	text-align: center;
-	-moz-box-shadow: 5px 5px 3px #888;
-	-webkit-box-shadow: 5px 5px 3px #888;
-	box-shadow: 5px 5px 3px #888;
+	-moz-box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.5);
+	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.5);
+}
+
+#closeIMG {
+    float: right;
 }

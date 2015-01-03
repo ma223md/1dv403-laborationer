@@ -6,5 +6,5 @@ window.onload = function(){
     var nav = new Navigation(desktop);
     
     // add icons to navigation
-    nav.newIcon('pics/image_icon.png', '64px', 'Gallery');
+    nav.newIcon('pics/image_icon.png', '64px', 'Image Viewer');
 };
