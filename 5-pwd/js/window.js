@@ -23,11 +23,6 @@ function Window(desktop, icon, name){
     
     // close window when button is clicked
     closeButton.onclick = function(e){
-        that.closeWindow();
+        desktop.element.removeChild(win);
     };
 }
-
-//function for closing window
-Window.prototype.closeWindow = function() {
-    this.desktop.element.removeChild(this.win);
-};
