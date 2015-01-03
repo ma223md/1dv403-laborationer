@@ -15,6 +15,7 @@ Navigation.prototype.newIcon = function(imgURL, width, name){
     icon.style.width = width;
     icon.style.height = "54px";
     
+    var that = this;
     // append to element
     this.element.appendChild(icon);
     
@@ -22,7 +23,7 @@ Navigation.prototype.newIcon = function(imgURL, width, name){
     icon.onclick = function(e){
         // create new window
         //e.preventDefault();
-        new Window(Navigation.desktop, icon);
+        new Window(that.desktop, icon);
         return false;
     };
 };
