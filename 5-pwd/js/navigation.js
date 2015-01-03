@@ -23,7 +23,7 @@ Navigation.prototype.newIcon = function(imgURL, width, name){
     icon.onclick = function(e){
         // create new window
         //e.preventDefault();
-        new Window(that.desktop, icon);
+        new Window(that.desktop, icon, name);
         return false;
     };
 };
