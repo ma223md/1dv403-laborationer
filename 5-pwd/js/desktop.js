@@ -2,5 +2,5 @@
 
 function Desktop(){
     // get desktop element
-    this.element = document.querySelector(".desktop");
+    this.element = document.querySelector("#desktop");
 }

@@ -22,8 +22,8 @@ Navigation.prototype.newIcon = function(imgURL, width, name){
     icon.onclick = function(e){
         // create new window
         //e.preventDefault();
-        var window = new Window(Navigation.desktop, icon);
+        new Window(Navigation.desktop, icon);
         return false;
-    }
-}
+    };
+};
 
