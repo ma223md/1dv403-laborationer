@@ -64,7 +64,7 @@ header h1 {
 	font-size: 1.2em;
 
 	width:500px;
-
+    opacity: 0.8;
 	border:3px solid black;
 	overflow:hidden;
 	margin:auto;
@@ -78,11 +78,11 @@ header h1 {
     display: block;
     padding: 10px;
     height: 30px;
-background: -webkit-gradient(linear, 0 0, 0 100%, from(#e1e2cc), to(#918a68));
-background: -webkit-linear-gradient(#e1e2cc 0%, #918a68 100%);
-background: -moz-linear-gradient(#e1e2cc 0%, #918a68 100%);
-background: -o-linear-gradient(#e1e2cc 0%, #918a68 100%);
-background: linear-gradient(#e1e2cc 0%, #918a68 100%);
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#e1e2cc), to(#918a68));
+    background: -webkit-linear-gradient(#e1e2cc 0%, #918a68 100%);
+    background: -moz-linear-gradient(#e1e2cc 0%, #918a68 100%);
+    background: -o-linear-gradient(#e1e2cc 0%, #918a68 100%);
+    background: linear-gradient(#e1e2cc 0%, #918a68 100%);
 }
 
 #closeIMG {
@@ -104,4 +104,8 @@ background: linear-gradient(#e1e2cc 0%, #918a68 100%);
 
 .windowContent {
     height: 100px;
+}
+
+.imageDiv {
+    float: left;
 }
