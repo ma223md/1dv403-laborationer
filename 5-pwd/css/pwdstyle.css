@@ -78,7 +78,11 @@ header h1 {
     display: block;
     padding: 10px;
     height: 30px;
-    background: -webkit-linear-gradient(top, #e1e2cc 0%,#918a68 100%);
+background: -webkit-gradient(linear, 0 0, 0 100%, from(#e1e2cc), to(#918a68));
+background: -webkit-linear-gradient(#e1e2cc 0%, #918a68 100%);
+background: -moz-linear-gradient(#e1e2cc 0%, #918a68 100%);
+background: -o-linear-gradient(#e1e2cc 0%, #918a68 100%);
+background: linear-gradient(#e1e2cc 0%, #918a68 100%);
 }
 
 #closeIMG {
