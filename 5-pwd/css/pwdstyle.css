@@ -108,4 +108,10 @@ header h1 {
 
 .imageDiv {
     float: left;
+    width: 85px;
+    height: 60px;
+    background-color: #f2efe0;
+    margin:5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }

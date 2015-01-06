@@ -22,6 +22,8 @@ function ImageViewer(){
                 // set attributes
                 link.setAttribute('href', '#');
                 imageDiv.setAttribute('class', 'imageDiv');
+                imageDiv.setAttribute("style","width:85px");
+                imageDiv.setAttribute("style","height:60px");
                 img.setAttribute('src', obj[i].thumbURL);
                 img.setAttribute('class', 'imageThumb');
                 
