@@ -13,7 +13,8 @@ function Window(desktop, icon, name){
     // assign elements for windowtop
     var windowTop = win.querySelector(".windowTop"),
     closeButton = win.querySelector("#closeIMG"),
-    windowName = win.querySelector(".name");
+    windowName = win.querySelector(".name"),
+    content = win.querySelector(".windowContent");
     
     // define variables
     this.desktop = desktop;
@@ -24,6 +25,12 @@ function Window(desktop, icon, name){
     
     //append new window
     desktop.element.appendChild(win);
+    
+    // loading image
+    this.loadingIcon = document.createElement('img');
+    this.loadingIcon.setAttribute('src', 'pics/loading_icon.GIF');
+    this.loadingIcon.setAttribute('class', 'loadingIcon');
+    content.appendChild(this.loadingIcon);
     
     // close window when button is clicked
     closeButton.onclick = function(e){

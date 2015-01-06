@@ -6,6 +6,11 @@ function ImageViewer(){
     
     xhr.onreadystatechange = function(){
     	if(xhr.readyState === 4 && xhr.status === 200){
+    	    // remove loading icon at response
+    	    var content = document.querySelector(".windowContent"),
+    	    loadIcon = document.querySelector(".loadingIcon");
+    	    content.removeChild(loadIcon);
+    	    
     	    // get picture object array
             // parse object
             var obj = JSON.parse(xhr.responseText);
@@ -13,7 +18,7 @@ function ImageViewer(){
             //loop trough array
             for (var i = 0; i < obj.length; i++){
                 // get elements
-                var content = document.querySelector(".windowContent")
+                //var content = document.querySelector(".windowContent")
                 // create img and a elements
                 var imageDiv = document.createElement("div"),
                 link = document.createElement("a"),
@@ -22,8 +27,6 @@ function ImageViewer(){
                 // set attributes
                 link.setAttribute('href', '#');
                 imageDiv.setAttribute('class', 'imageDiv');
-                imageDiv.setAttribute("style","width:85px");
-                imageDiv.setAttribute("style","height:60px");
                 img.setAttribute('src', obj[i].thumbURL);
                 img.setAttribute('class', 'imageThumb');
                 

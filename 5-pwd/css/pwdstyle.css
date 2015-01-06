@@ -103,15 +103,23 @@ header h1 {
 }
 
 .windowContent {
-    height: 100px;
+    height: 250px;
+    overflow: scroll;
+}
+
+.loadingIcon {
+    height: 30px;
+    padding-top: 10px;
 }
 
 .imageDiv {
     float: left;
     width: 85px;
-    height: 60px;
+    height: 50px;
     background-color: #f2efe0;
     margin:5px;
+    padding-top:5px;
+    padding-bottom:5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
