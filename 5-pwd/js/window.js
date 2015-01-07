@@ -64,6 +64,6 @@ function Window(desktop, icon, name){
 
 Window.prototype.checkName = function(name) {
     if (name === "Image Viewer"){
-        new ImageViewer();
+        new ImageViewer(Window.win, Window.desktop);
     }
 }
