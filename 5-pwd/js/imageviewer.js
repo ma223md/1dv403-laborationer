@@ -17,7 +17,7 @@ function ImageViewer(win, desktop){
     	    link,
     	    img,
     	    images = [],
-    	    URL = [];
+    	    urls = [];
     	    
             // parse object
             var obj = JSON.parse(xhr.responseText);
@@ -40,18 +40,20 @@ function ImageViewer(win, desktop){
                 
                 // put url in array
                 images.push(img);
-                URL.push(obj[i].URL);
+                urls.push(obj[i].URL);
                 
                 // append elements
                 imageDiv.appendChild(img);
                 link.appendChild(imageDiv);
                 content.appendChild(link);
                 
-                img.onclick = function(){
-                    //change desktop background
-                    //"url(" + obj[i].URL + ")";
-                    document.getElementById("desktop").style.backgroundImage = "url('http://homepage.lnu.se/staff/tstjo/labbyServer/imgviewer/pics/1050509.jpg')";
-                };
+                
+                // change background image on click
+                img.onclick = (function(url){
+                    return function() {
+                        document.getElementById("desktop").style.backgroundImage = "url('" + url + "')";
+                    };
+                })(obj[i].URL);
             }
     	}
     };
