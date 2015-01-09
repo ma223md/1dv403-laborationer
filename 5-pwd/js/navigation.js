@@ -2,7 +2,7 @@
 
 function Navigation(desktop){
     //get navigation elements
-    this.element = document.getElementById("iconbar")
+    this.element = document.getElementById("iconbar");
     this.desktop = desktop;
 }
 

@@ -41,39 +41,31 @@ header h1 {
     border-style: solid;
     border-width: 1px;
     border-color: black;
+    background: -webkit-gradient(linear, 0 0, 0 100%, from(#e1e2cc), to(#918a68));
+    background: -webkit-linear-gradient(#e1e2cc 0%, #918a68 100%);
+    background: -moz-linear-gradient(#e1e2cc 0%, #918a68 100%);
+    background: -o-linear-gradient(#e1e2cc 0%, #918a68 100%);
+    background: linear-gradient(#e1e2cc 0%, #918a68 100%);
 }
 
 #iconbar img {
     margin: 10px;
 }
 
-/*p {
-    font-family: article;
-    font-size: 14px;
-    text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    color: black;
-    word-wrap: break-word;
-}*/
-
 .window {
 	background:#E3DEBF;
 	font-size: 1.2em;
-
 	width:500px;
     opacity: 0.8;
-	border:3px solid black;
+	border:1px solid black;
 	overflow:hidden;
 	margin:auto;
 	text-align: center;
 	-moz-box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.5);
 	-webkit-box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.5);
 	box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.5);
-    -moz-border-radius: 15px;
-    border-radius: 15px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
 
 .windowTop {
@@ -87,10 +79,15 @@ header h1 {
     background: linear-gradient(#e1e2cc 0%, #918a68 100%);
 }
 
-#closeIMG {
+.windowIcon {
+    height: 15px;
+    float: left;
+    padding-right: 10px;
+}
+
+.closeIMG {
     float: right;
-    width: 20px;
-    width: 20px;
+    width: 15px;
 }
 
 .name {

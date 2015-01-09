@@ -10,14 +10,6 @@ function ImageViewer(win, desktop){
     	   var content = document.querySelector(".windowContent"),
     	   loadIcon = document.querySelector(".loadingIcon");
     	   content.removeChild(loadIcon);
-    	   //win.removeChild(win.loadingIcon);
-    	    
-    	    // variables
-    	    var imageDiv,
-    	    link,
-    	    img,
-    	    images = [],
-    	    urls = [];
     	    
             // parse object
             var obj = JSON.parse(xhr.responseText);
@@ -27,8 +19,8 @@ function ImageViewer(win, desktop){
                 // get elements
                 //var content = document.querySelector(".windowContent");
                 // create img and a elements
-                imageDiv = document.createElement("div");
-                link = document.createElement("a");
+                var imageDiv = document.createElement("div"),
+                link = document.createElement("a"),
                 img = document.createElement("img");
                 
                 // set attributes
@@ -38,15 +30,10 @@ function ImageViewer(win, desktop){
                 img.setAttribute('src', obj[i].thumbURL);
                 img.setAttribute('class', 'imageThumb');
                 
-                // put url in array
-                images.push(img);
-                urls.push(obj[i].URL);
-                
                 // append elements
                 imageDiv.appendChild(img);
                 link.appendChild(imageDiv);
                 content.appendChild(link);
-                
                 
                 // change background image on click
                 img.onclick = (function(url){

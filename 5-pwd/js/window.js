@@ -1,10 +1,6 @@
 "use strict";
 
 function Window(desktop, icon, name){
-    // check name
-    this.checkName(name);
-
-    
     // get window elements
     var temp = document.querySelector(".template"),
     windowTemp = temp.content.querySelector(".window"),
@@ -12,7 +8,7 @@ function Window(desktop, icon, name){
     
     // assign elements for windowtop
     var windowTop = win.querySelector(".windowTop"),
-    closeButton = win.querySelector("#closeIMG"),
+    closeButton = win.querySelector(".closeIMG"),
     windowName = win.querySelector(".name"),
     content = win.querySelector(".windowContent");
     
@@ -26,11 +22,14 @@ function Window(desktop, icon, name){
     //append new window
     desktop.element.appendChild(win);
     
+    // check name
+    this.checkName(name);
+    
     // loading image
-    this.loadingIcon = document.createElement('img');
-    this.loadingIcon.setAttribute('src', 'pics/loading_icon.GIF');
-    this.loadingIcon.setAttribute('class', 'loadingIcon');
-    content.appendChild(this.loadingIcon);
+    var loadingIcon = document.createElement('img');
+    loadingIcon.setAttribute('src', 'pics/loading_icon.GIF');
+    loadingIcon.setAttribute('class', 'loadingIcon');
+    content.appendChild(loadingIcon);
     
     // close window when button is clicked
     closeButton.onclick = function(e){
@@ -50,7 +49,7 @@ function Window(desktop, icon, name){
     function mouseDown(e) {
         offset.x = e.clientX - win.offsetLeft;
         offset.y = e.clientY - win.offsetTop;
-        win.addEventListener('mousemove', popupMove, true)
+        win.addEventListener('mousemove', popupMove, true);
     }
     
     function popupMove(e) {
@@ -64,6 +63,11 @@ function Window(desktop, icon, name){
 
 Window.prototype.checkName = function(name) {
     if (name === "Image Viewer"){
+        // set top picture
+        var windowicon = this.win.querySelector(".windowIcon");
+        windowicon.setAttribute('src', 'pics/image_icon.png');
+        
+        // create image gallery
         new ImageViewer(Window.win, Window.desktop);
     }
-}
+};
