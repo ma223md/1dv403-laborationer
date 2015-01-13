@@ -2,9 +2,9 @@
 
 function Window(desktop, icon, name){
     // get window elements
-    var temp = document.querySelector(".template"),
-    windowTemp = temp.content.querySelector(".window"),
-    win = windowTemp.cloneNode(true);
+    var temp = document.querySelector(".template");
+    var windowTemp = temp.content.querySelector(".window");
+    var win = windowTemp.cloneNode(true);
     
     // assign elements for windowtop
     var windowTop = win.querySelector(".windowTop"),
@@ -22,7 +22,7 @@ function Window(desktop, icon, name){
     //append new window
     desktop.element.appendChild(win);
     
-    // check name
+    // check name to match app
     this.checkName(name);
     
     // loading image
